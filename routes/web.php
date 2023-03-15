@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\OwnerController;
 
 Route::resource('/person', PersonController::class);
 Route::resource('asset', AssetController::class);
+Route::resource('/owner', OwnerController::class);
 
 Route::get('/welcome', function () {
     return "Hello World!";
@@ -25,5 +27,5 @@ Route::get('/welcome', function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcomes');
 });

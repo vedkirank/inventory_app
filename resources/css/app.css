@@ -1,15 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.inventory-table{
-    border: 1px solid;
-    width: 100%;
-}
-.add-link{
-    font-weight:bold;text-decoration:underline;float:right;padding-bottom:2em
-}
-.table-hdr{
-    font-weight: bold;
-    color: red;
-}

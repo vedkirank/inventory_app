@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Carbon\Carbon;
 
@@ -17,11 +18,15 @@ class AssetFactory extends Factory
      */
     public function definition(): array
     {
+        // $user = Person::factory()->create();
         return [
             'name' => fake()->word,
             'description' => fake()->sentence,
             'value' => fake()->randomNumber(4),
             'purchased' => Carbon::now()->subDays(fake()->numberBetween(1,365)),
+            'personID' => function () {
+                return Person::factory(Person::class)->create()->id;
+            },
         ];
     }
 }

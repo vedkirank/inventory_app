@@ -14,4 +14,16 @@
             </div>
         </div>
     </div>
+
+    <div>
+        <nav>
+            <ul>
+                <li><a href="{{ route('asset.index') }}">Assets</a></li>
+                
+                <li><a href="{{ route('person.index') }}">People</a></li>
+                
+                <li><a href="{{ route('owner.index') }}">Ownership</a></li>
+            </ul>
+        </nav>
+    </div>
 </x-app-layout>

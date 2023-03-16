@@ -17,9 +17,9 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\OwnerController;
 
-Route::resource('/person', PersonController::class)->middleware(['auth', 'verified']);
-Route::resource('asset', AssetController::class)->middleware(['auth', 'verified']);
-Route::resource('/owner', OwnerController::class)->middleware(['auth', 'verified']);
+Route::resource('/person', PersonController::class);
+Route::resource('asset', AssetController::class);
+Route::resource('/owner', OwnerController::class);
 
 Route::get('/', function () {
     return view('welcome');

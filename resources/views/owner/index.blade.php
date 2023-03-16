@@ -1,17 +1,44 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Owner List') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+<body>
+    @if (session()->get('success'))
+    {{ session()->get('success') }}
+@endif
+    <table>
+        <tr>
+            <td>Owner Name</td>
+            <td>Asset Owned</td>
+            @if (auth()->check())
+            <td>Actions</td>
+            @endif
 
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+            
+        </tr>
+    @foreach ($owner as $item)
+    <tr>
+        @if ($item->personID != NULL)
+            
+        <td>{{ $item->person->fname }}</td>
+        <td>{{ $item->name }}</td>
+        @if (auth()->check())        
+        <td><a href="{{ route('owner.edit', $item->id) }}">Edit</a></td>
+        <td>
+            <form action="{{ route('owner.destroy', $item->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type='submit'>Delete</button>
+            </form>
+        </td>
+        @endif
+
+        @endif
+    </tr>
+    @endforeach
+</table>
+    @if (auth()->check())
+    <a href="{{ route('owner.create') }}">Create Ownership</a>
+    @endif
+</body>
+
+</html>
